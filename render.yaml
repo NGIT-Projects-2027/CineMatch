@@ -1,0 +1,35 @@
+# Render Blueprint - Auto-configures both services
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Flask ML Recommendation Service (Python)
+  - type: web
+    name: cinematch-ml
+    runtime: python
+    rootDir: ml-service
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # Express Backend API (Node.js)
+  - type: web
+    name: cinematch-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: TVDB_API_KEY
+        sync: false
+      - key: FLASK_ML_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
