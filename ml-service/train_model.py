@@ -128,7 +128,11 @@ def train_model():
     print("[*] Computing cosine similarity matrix...")
     similarity = cosine_similarity(vectors)
     
-    print(f"    Similarity matrix shape: {similarity.shape}")
+    # Cast to float16 to drastically reduce memory usage (from ~185MB to ~46MB)
+    # This prevents Out of Memory (OOM) errors on Render's 512MB free tier
+    similarity = similarity.astype(np.float16)
+    
+    print(f"    Similarity matrix shape: {similarity.shape}, Memory: {similarity.nbytes / (1024**2):.1f} MB")
     
     # Ensure frontend compatibility by renaming movie_id to movieId
     new_df = new_df.rename(columns={'movie_id': 'movieId'})
