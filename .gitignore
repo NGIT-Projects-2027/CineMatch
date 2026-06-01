@@ -1,0 +1,38 @@
+# Dependencies (match in any subdirectory)
+**/node_modules/
+__pycache__/
+*.pyc
+
+# Environment files (contain secrets)
+.env
+.env.local
+backend/.env
+
+# Build outputs
+frontend/dist/
+
+# ML model pickle files (regenerated during build on Render)
+ml-service/models/*.pkl
+
+# Unnecessary data files (only tmdb_5000_*.csv are needed for training)
+ml-service/data/links.csv
+ml-service/data/movies.csv
+ml-service/data/ratings.csv
+ml-service/data/tags.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Zip files
+*.zip
+
+# Lock files (will be regenerated on deploy)
+**/package-lock.json
+
+# Test files
+backend/test_tvdb.js
