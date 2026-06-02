@@ -1,6 +1,6 @@
 # CineMatch 🎬 — AI-Powered Movie Recommendation Platform
 
-**🌐 Live Demo:** [https://cine-match-bice-one.vercel.app](https://cine-match-bice-one.vercel.app)
+**🌐 Live Link:** [https://cine-match-bice-one.vercel.app](https://cine-match-bice-one.vercel.app)
 
 CineMatch is a full-stack, enterprise-grade movie recommendation platform. By utilizing Natural Language Processing (NLP) and content-based filtering algorithms, it analyzes metadata attributes (including genres, key plot overviews, main cast members, directors, and search keywords) to deliver highly personalized suggestions to users.
 
